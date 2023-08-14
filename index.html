@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacts List</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/6439266c9f.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    
+
+
+<div class="main-container">
+
+
+    <div class="input-container">
+        <h2> Contact Details</h2>
+        <div class="form-container">
+            <form >
+   <label for="name"> Name</label>
+   <input type="text" id="name">
+
+
+   <label for="address"> Address</label>
+   <input type="text" id="adrress">
+
+   <label for="contact-number"> Phone Number</label>
+   <input type="text" id="contact-number">
+
+</form>
+
+   <span class="message">  </span>
+
+
+
+   <div class="input-btn">
+    <button type="submit" id="submit-btn">
+
+        <span>  <i  class="fas fa-plus"></i>   </span>
+    </button>
+
+
+
+   </div>
+
+
+         
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="record-display">
+
+<h2> Available Contacts:</h2>
+<button  type="button" id="reset-btn"> Reset</button>
+
+
+<div class="record-container">
+    <div class="record-item">
+       <div class="record-element">
+<span id="labelling"> Contact ID:</span>
+<span id="contact-id"> 1</span>
+</div>
+
+<div class="record-element">
+    <span id="labelling">  Name:</span>
+    <span id="name-content">  Ivan Dorn</span>
+</div>
+
+
+<div class="record-element">
+    <span id="labelling">  Address:</span>
+    <span id="address-content">  Montreal </span>
+</div>
+
+<div class="record-element">
+    <span id="labelling">  Pnone Number:</span>
+    <span id="address-content"> (514) 298-9443 </span>
+</div>
+
+<button type="button" id="delete-btn"> 
+    <span> <i class="fas fa-trash"></i></span> Delete </button>
+
+    </div>
+</div>
+
+
+</div>
+
+
+<script  src="index.js"></script>
+
+</body>
+</html>
