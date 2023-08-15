@@ -1,0 +1,174 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap');
+
+
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+
+body{
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+ 
+}
+h2{
+    text-align: center;
+}
+.main-container{
+    margin: 0px auto;
+    padding: 25px;
+    border-radius: 5px;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+}
+
+.input-container, .record-display{
+    border-radius: 10px;
+    padding: 20px 0;
+    margin: 30px 0;
+    box-shadow: 0 px 0px 6px 0px;
+  
+}
+
+.record-display{
+    background-color: #FF896B; 
+    position: relative;  
+    color: #fff;
+}
+.record-container{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 30px;
+}
+
+.input-container{
+    background-color: #F3F3F3;
+
+}
+
+form{
+  display: flex;  
+  flex-direction: column;
+  width: 75%;
+  margin: 0 auto;
+}
+
+form label {
+    font-weight: 500;
+    opacity: 0.7;
+
+}
+
+form label, form input{
+    display: block;
+    outline: none;
+    border-radius: 25px;
+    border: none;
+}
+
+form input[type = "text"], form input[type = "number"]{
+    color: #000;
+   font-size: 16px;
+   padding: 10px 18px;
+   margin: 12px 0;
+   transition: all 0.5s ease;
+}
+
+form input:focus{
+    background-color:#B8B2A6;
+    color: #fff;
+}
+
+
+.message{
+    text-align: center;
+    display: block;
+    width: 50%;
+    margin: 10px auto;
+    font-size: 14px;
+    color: #F3F3F3;
+    border-radius: 5px;
+    padding: 10px 0;
+    visibility: hidden;
+}
+
+.error{
+    background-color: red;
+    visibility: visible;
+}
+
+.success{
+    background-color: green;
+    visibility: visible!important;
+}
+
+.input-btns{
+  text-align: center;  
+}
+
+button{
+    display: block;
+    width: 160px;
+    margin: 20px auto;
+    font-size: 15px;
+    font-weight: 500;
+    padding: 10px;
+    border: 3px solid #F3F3F3;
+    border-radius: 25px;
+    background-color: #000;
+    color: #F3F3F3;
+    cursor: pointer;
+
+}
+
+button:hover {
+    opacity: 1;
+}
+
+#reset-btn{
+    position: absolute;
+    right: 25px;
+    top: 10px;
+    width: 120px;
+}
+
+.record-element{
+    display: block;
+    padding: 4px 0;
+    text-align: center;
+    opacity: 0.9;
+}
+
+#labelling{
+    font-weight: 700;
+}
+
+.record-item{
+    color:#000;
+    border-radius: 10px;
+    padding: 10px 25px;
+    margin: 20px 20px;
+    background: #fff;
+    box-shadow: 0 0 6px #777;
+}
+
+#cansel-btn span{
+    padding-right: 5px;
+}
+
+@media screen and(min-width: 992px){
+    .main-container{
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        width: 90vw;
+        grid-column-gap: 30px;
+    }
+
+    input{
+        height: 700px;
+    }
+
+
+}
