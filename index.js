@@ -12,7 +12,7 @@ let contactArray = [];
 let id = 0;
 
 
-function Contact(id, name, address, number){
+function contact(id, name, address, number){
     this.id = id;
     this.name = name;
     this.address = address;
@@ -22,14 +22,13 @@ function Contact(id, name, address, number){
 
 
 document.addEventListener('DOMContentLoaded', function(){
-   contactArray = [
-    {
-        id: 10,
-        name: "Ivan",
-        address: "Montreal",
-        number: "1514-298-9443"
+
+    if(localStorage.getItem('contacts') == null){
+        contactArray = [];
+    } else{
+        contactArray = JSON.parse(localStorage.getItem('contacts'));
     }
-   ]
+  
    displayRecord();
 });
 
@@ -45,13 +44,24 @@ function displayRecord(){
 
 
 addBtn.addEventListener('click', function(){
+    if(checkInputFields([name, address, number])){
+        setMessage("success", "Record added successfully!");
+    
     id++;
-    const contact = new Contact(id, name.value, address.value, number.value);
+
+    const contact = new contact(id, name.value, address.value, number.value);
     contactArray.push(contact);
+
+    //storing contact record in local storage
+    localStorage.setItem('contacts', JSON.stringify(contactArray));
+    clearInputFields();
 
 
     //add to list
     addToList(contact);
+} else {
+    setMessage("error", "Invalid input!")
+}
 });
 
 
@@ -90,6 +100,77 @@ addBtn.addEventListener('click', function(){
         recordContainer.appendChild(newRecordDiv);
     }
 
+    //delete record
+
+    recordContainer.addEventListener('click', function(event){
+        //console.log(event.target);
+        if(event.target.id === 'delete-btn'){
+            //removing from DOM
+            let recordItem = event.target.parentElement;
+            recordContainer.removeChild(recordItem);
+            let tempContactList = contactArray.filter(function(record){
+                return(record.id === parseInt(recordItem.firstElementChild.lastElementChild.textContent));
+
+            });
+            contactArray = tempContactList;
+            //removing from localstorage
+
+            localStorage.setItem('contacts', JSON.stringify(contactArray));
+        }
+
+    });
+
+//resetting everything
+
+resetBtn.addEventListener('click', function(){
+    contactArray = [];
+    localStorage.setItem('contacts', JSON.stringify(contactArray));
+    location.reload();
+})
+
+
+
+
+    // displaying status
+
+    function setMessage(status, message){
+        let messageBox = document.querySelector('.message');
+        if(status == "error"){
+            messageBox.innerHTML = `${message}`;
+            messageBox.classList.add('error');
+            removeMessage(status, messageBox);
+        }
+         if(status == "success"){
+            messageBox.innerHTML = `${message}`;
+            messageBox.classList.add('success');
+            removeMessage(status, messageBox);
+        }
+    }
+
+
+    //clearing input
+
+    deleteBtn.addEventListener('click', function(){
+        clearInputFields();
+
+    });
+
+    function  clearInputFields(){
+        name.value = "";
+        address.value = "";
+        number.value = "";
+    }
+
+    //removing status
+
+    function removeMessage(status, messageBox){
+        setTimeout(function(){
+            messageBox.classList.remove(`${status}`);
+        }, 2000);
+        
+    }
+
+
 
     //input field validation
 
@@ -105,6 +186,20 @@ addBtn.addEventListener('click', function(){
 
         return true;
     }
+
+
+    //phone number validation function
+
+    function phoneNumberCheck(inputtext){
+        let phoneNumber = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+        if(inputtext.match(phoneNumber)){
+            return true;
+
+        } else{
+            return false;
+        }
+    }
+
 
 
 
